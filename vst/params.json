@@ -1,0 +1,16 @@
+{
+  "name": "Nepenthe",
+  "params": [
+    {"key": "time", "name": "Time", "min": 0, "max": 1000, "default": 354, "dynamic_display": true},
+    {"key": "delay", "name": "Delay", "min": 0, "max": 200, "default": 30, "dynamic_display": true},
+    {"key": "bass", "name": "Bass", "min": 0, "max": 100, "default": 50, "dynamic_display": true},
+    {"key": "treble", "name": "Treble", "min": 0, "max": 100, "default": 50, "dynamic_display": true},
+    {"key": "width", "name": "Width", "min": 0, "max": 100, "default": 100, "dynamic_display": true},
+    {"key": "mix", "name": "Mix", "min": 0, "max": 100, "default": 100, "dynamic_display": true}
+  ],
+  "sections": [
+    {"label": "Reverb", "keys": ["time", "delay"]},
+    {"label": "Tone", "keys": ["bass", "treble"]},
+    {"label": "Output", "keys": ["width", "mix"]}
+  ]
+}

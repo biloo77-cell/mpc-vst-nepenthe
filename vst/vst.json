@@ -1,0 +1,21 @@
+{
+  "name": "Nepenthe",
+  "vendor": "OpenMPC",
+  "uid": "Npth",
+  "version": 1010,
+  "so": "nepenthe.so",
+  "params": "params.json",
+  "effect": true,
+  "layout": "layout.conf",
+  "art": "html",
+  "targets": ["armv7", "aarch64"],
+  "build": {
+    "root": "..",
+    "sources": ["src/engine.cpp", "src/Parameters.cpp", "src/opt/Reverberator.cpp",
+                "src/opt/Echoes.cpp", "upstream/Source/Delay.cpp", "upstream/Source/Equalizer.cpp",
+                "upstream/Source/Mixer.cpp", "upstream/Source/Timer.cpp"],
+    "cflags": ["-std=gnu++17", "-Isrc/shim", "-Iupstream/Source", "-O3", "-ffp-contract=off", "-fno-math-errno"],
+    "cflags_arm": ["-mfpu=neon-vfpv4", "-mtune=cortex-a17"],
+    "libs": ["-lm"]
+  }
+}
