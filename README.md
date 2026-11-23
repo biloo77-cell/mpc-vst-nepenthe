@@ -16,9 +16,11 @@ velvet-noise reverb, to Akai MPC OS standalone devices as a VST2 insert effect, 
 Download the zip for your MPC from [Releases](../../releases): `-mpc-armv7` for Gen1, `-mpc-aarch64` for Gen2.
 
 - **MPC OS 3.10.1 and later** (Preferences, Enhancements, VST2 Support on): copy the folder
-  `portable/OpenMPC - VST - Nepenthe/` from the zip into `VST2 Plugins/` at the root of a drive (on a Gen1 internal
+  `portable/ikloX - VST - Nepenthe/` from the zip into `VST2 Plugins/` at the root of a drive (on a Gen1 internal
   drive: `/sdcard/VST2 Plugins/`), then restart MPC. Or, as root: `sh install.sh -t "/sdcard/VST2 Plugins"`.
 - **Earlier MPC OS** (root needed): `sh install.sh` from the unzipped folder; see the zip's `INSTALL.md`.
+
+- **Upgrading from 1.0.1 or earlier:** the plugin folder is now `ikloX - VST - Nepenthe` (it was `OpenMPC - VST - Nepenthe`). The installer removes the old folder itself; if you copied the folder by hand, delete the old one so the plugin is not listed twice. The plugin's uid is unchanged, so saved projects keep their instances.
 
 ## Build and test
 Needs Docker with arm/arm64 emulation (WSL) and a checkout of `open-mpc/mpc-vst-plugins` next to this repo:
@@ -35,9 +37,9 @@ g++ -std=gnu++17 -O2 -ffp-contract=off -Isrc/shim -Iupstream/Source -I../mpc-vst
 Offline: `tests/ref_check.cpp` shows the reverb bit-identical to upstream's on x86 and armv7 (NEON), in 128-, 100- and
 64-frame blocks, and the measured T60 following TIME (0.50 s, 2.21 s, 4.14 s for 0.50, 2.20, 4.12 s); host test PASSED
 on x86 (ASan/UBSan) and aarch64.
-Device, MPC Live Gen1, MPC OS 3.10.1: installed from the portable folder, listed in the plugin browser, loaded as an
-insert (screenshot above). Bench: mean 10.0 %, p99 10.8 % of an audio block while playing; 16.0 % p99 while Q-Links
-sweep every parameter (WARN: each TIME change recomputes the 2000 echo gains exactly as upstream does). Gen2: offline only.
+Device, MPC Live Gen1, MPC OS 3.10.1 (1.0.2, 2026-11-23): installed with the release's `install.sh`, the old
+`OpenMPC - VST -` folder removed by the installer, listed in the plugin browser, loaded as an insert (screenshot above).
+Bench: mean 10.3 %, p99 11.7 % of an audio block; 17.1 % p99 while Q-Links sweep every parameter (WARN: each TIME change recomputes the 2000 echo gains exactly as upstream does). Gen2: offline only.
 
 ## Licence
 GPL-3.0 (`LICENSE`), as upstream. Fonts in `vst/skin/fonts/`: Karla and Playball, SIL Open Font License.

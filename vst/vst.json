@@ -1,8 +1,8 @@
 {
   "name": "Nepenthe",
-  "vendor": "OpenMPC",
+  "vendor": "ikloX",
   "uid": "Npth",
-  "version": 1010,
+  "version": 1020,
   "so": "nepenthe.so",
   "params": "params.json",
   "effect": true,
